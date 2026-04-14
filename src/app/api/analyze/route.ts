@@ -13,8 +13,12 @@ export async function GET(request: NextRequest) {
     const html = await response.text();
     const analysis = analyzeHTML(url, html);
     return NextResponse.json(analysis);
-  } catch {
-    return NextResponse.json({ error: 'Failed to fetch URL' }, { status: 500 });
+  } catch (err) {
+    const isTimeout = err instanceof Error && err.name === 'TimeoutError';
+    const message = isTimeout
+      ? 'Request timed out after 15 seconds. The website may be slow or unreachable.'
+      : 'Failed to fetch URL. Please verify the URL is accessible and try again.';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
 

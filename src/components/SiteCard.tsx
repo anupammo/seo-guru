@@ -38,7 +38,7 @@ export default function SiteCard({ site, onRemove, onUpdate }: Props) {
       onUpdate({ lastScore: result.overallScore, lastAnalyzed: result.analyzedAt });
       sessionStorage.setItem(`analysis_${site.id}`, JSON.stringify(result));
     } catch {
-      setError('Analysis failed. Check URL.');
+      setError('Failed to analyze site. Please verify the URL is accessible and try again.');
     } finally {
       setAnalyzing(false);
     }
