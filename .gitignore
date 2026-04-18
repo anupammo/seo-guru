@@ -4,3 +4,4 @@ out/
 dist/
 *.local
 .env*.local
+.vercel
