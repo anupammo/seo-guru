@@ -76,7 +76,15 @@ export default function SiteReport() {
   if (!site) return null;
 
   return (
-    <div className="container-fluid py-4">
+    <div className="container-fluid px-3 px-md-4 py-4 py-lg-5">
+      <div className="section-heading mb-4">
+        <div>
+          <span className="eyebrow"><i className="bi bi-gem me-2"></i>Premium site report</span>
+          <h1 className="h3 fw-bold mt-2 mb-1">{site.name}</h1>
+          <p className="text-muted mb-0">Deep SEO insights with a refined mobile-friendly report layout.</p>
+        </div>
+      </div>
+
       {/* Header */}
       <div className="d-flex align-items-center mb-4 gap-3 flex-wrap no-print">
         <button className="btn btn-outline-secondary btn-sm" onClick={() => router.push('/')}>
@@ -207,7 +215,7 @@ export default function SiteReport() {
           </div>
 
           {/* Tabs */}
-          <ul className="nav nav-tabs mb-4 no-print">
+          <ul className="nav nav-tabs mb-4 no-print premium-tabs">
             {(Object.keys(tabLabels) as TabName[]).map(tab => (
               <li key={tab} className="nav-item">
                 <button

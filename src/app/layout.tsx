@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   title: 'SEO Guru - SEO Analysis Dashboard',
   description: 'Track and optimize multiple websites with comprehensive SEO analysis',
   manifest: '/manifest.webmanifest',
-  appleWebApp: { capable: true, statusBarStyle: 'default', title: 'SEO Guru' },
+  appleWebApp: { capable: true, statusBarStyle: 'black-translucent', title: 'SEO Guru' },
 };
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#0d6efd',
+  themeColor: '#7c3aed',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -23,22 +23,36 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="apple-touch-icon" href="/icon-192.png" />
       </head>
-      <body>
+      <body className="premium-body">
         <ServiceWorkerRegister />
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
-          <div className="container-fluid">
-            <a className="navbar-brand fw-bold" href="/">
-              <i className="bi bi-graph-up-arrow me-2"></i>SEO Guru
-            </a>
-            <span className="navbar-text text-white-50 small d-none d-md-block">
-              SEO Analysis Dashboard
-            </span>
-          </div>
-        </nav>
-        <main>{children}</main>
-        <footer className="bg-dark text-white-50 text-center py-3 mt-5">
-          <small>SEO Guru &copy; {new Date().getFullYear()} - Comprehensive SEO Analysis</small>
-        </footer>
+        <div className="app-shell">
+          <div className="app-bg-orb orb-1"></div>
+          <div className="app-bg-orb orb-2"></div>
+          <div className="app-bg-orb orb-3"></div>
+
+          <nav className="navbar premium-navbar sticky-top">
+            <div className="container-fluid px-3 px-md-4">
+              <a className="premium-brand" href="/">
+                <span className="brand-icon">
+                  <i className="bi bi-stars"></i>
+                </span>
+                <span className="brand-copy">
+                  <strong>SEO Guru</strong>
+                  <small>Premium growth dashboard</small>
+                </span>
+              </a>
+              <span className="premium-pill d-none d-md-inline-flex">
+                <i className="bi bi-phone me-2"></i>PWA Ready
+              </span>
+            </div>
+          </nav>
+
+          <main className="app-main">{children}</main>
+
+          <footer className="premium-footer">
+            <small>SEO Guru &copy; {new Date().getFullYear()} • Premium SEO experience</small>
+          </footer>
+        </div>
       </body>
     </html>
   );
